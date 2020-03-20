@@ -409,8 +409,8 @@ bundle agent federation_manage_files
         copy_from => default:local_dcp( "$(this.promise_dirname)/../../../templates/federated_reporting/import_file.sh" ),
         perms => default:mog( "700", "root", "root" );
 
-      "$(cfengine_enterprise_federation:config.federation_dir)/superhub/import/filters/10-base_filter.sed"
-        copy_from => default:local_dcp( "$(this.promise_dirname)/../../../templates/federated_reporting/10-base_filter.sed" ),
+      "$(cfengine_enterprise_federation:config.federation_dir)/superhub/import/filters/10-superhub_mangle.sed"
+        copy_from => default:local_dcp( "$(this.promise_dirname)/../../../templates/federated_reporting/10-superhub_mangle.sed" ),
         perms => default:mog( "600", "root", "root" );
 }
 
