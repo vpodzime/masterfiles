@@ -18,9 +18,6 @@ s/public\.//g;
 # enable more debug messages
 s/client_min_messages = warning/client_min_messages = notice/
 
-# Munge rows from __promiselog child tables (like __promiselog_KEPT_2017-01-01)
-# to write them to parent table on import (and the database will take care
-# of placing them in the appropriate child table)
-/^INSERT INTO "__promiselog_/ {
-    s/^INSERT INTO "__promiselog_.[^"]*"/INSERT INTO __promiselog/;
-};
+# __promiselog* tables are not per-feeder partitioned, they are in the 'public'
+# schema
+/^INSERT INTO "__promiselog/s/^INSERT INTO "__promiselog"/INSERT INTO public."__promiselog/;
