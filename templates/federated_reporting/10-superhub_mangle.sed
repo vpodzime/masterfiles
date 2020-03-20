@@ -23,5 +23,4 @@ s/client_min_messages = warning/client_min_messages = notice/
 # of placing them in the appropriate child table)
 /^INSERT INTO "__promiselog_/ {
     s/^INSERT INTO "__promiselog_.[^"]*"/INSERT INTO __promiselog/;
-    s/VALUES [^,]*,/VALUES \(DEFAULT,/;
 };
